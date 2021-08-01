@@ -5,7 +5,7 @@ import fs from "fs";
 
 const { JSDOM } = jsdom;
 
-let csvData = "";
+let outputData = "";
 let url =
   "https://job.rikunabi.com/2022/search/company/result/?fw=&ms=0&kk=0&wk=2&wk=3&wk=4&wk=5&aot=&apr=&cwr=&cmr=&rry=3&rr=&ggr=1&gr=&awy=&wer=&wmr=&ad=7&ad=11&ad=12&exr=1&hu=1";
 
@@ -24,13 +24,13 @@ const scraping = async (url) => {
       ".ts-h-search-cassetteRemainingTextCounter"
     ).textContent;
 
-    csvData += name + "," + remainingPeople + "\r\n";
+    outputData += name + "," + remainingPeople + "\r\n";
   });
   const nextPageButton = document.querySelector(".ts-h-search-pagerBtn_next");
   const nextUrl =
     "https://job.rikunabi.com/" + nextPageButton.getAttribute("href");
 
-  fs.writeFile("out.txt", csvData, (err) => {
+  fs.writeFile("out.txt", outputData, (err) => {
     if (err) console.log(err);
     else console.log("write end");
   });

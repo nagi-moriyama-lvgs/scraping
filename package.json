@@ -12,5 +12,8 @@
     "fs": "0.0.1-security",
     "jsdom": "^16.6.0",
     "node-fetch": "^2.6.1"
+  },
+  "dependencies": {
+    "readline": "^1.3.0"
   }
 }
